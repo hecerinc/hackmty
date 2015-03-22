@@ -2,16 +2,16 @@ tutor.sublime-project
 tutor.sublime-workspace
 # User specific & automatically generated files #
 #################################################
-/app/Config/database.php
-/app/tmp
-/lib/Cake/Console/Templates/skel/tmp/
-/plugins
-/vendors
-/build
-/dist
-/tags
-*.mo
-/app/Test
+#/app/Config/database.php
+#/app/tmp
+#/lib/Cake/Console/Templates/skel/tmp/
+#/plugins
+#/vendors
+#/build
+#/dist
+#/tags
+#*.mo
+#/app/Test
 # IDE and editor specific files #
 #################################
 /nbproject
