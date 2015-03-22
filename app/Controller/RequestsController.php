@@ -15,6 +15,24 @@ class RequestsController extends AppController {
  */
 	public $components = array('Paginator');
 
+
+/**
+* accept request
+* value es el valor que se le dara al field accepted (tinyint), 1 o 0, true o false.
+*/
+
+	public function accept_request($request_id, $value){
+		$this->autoRender = false;
+		if(!$this->request->is('ajax'))
+			return false;
+		$request = $this->Request->find('first', array('conditions' => array('Request.id' => $request_id)); 
+		if(!$request)
+			return false;
+		$this->Request->id = $request_id; 
+		$this->Request->saveField('accepted', $value);
+		return json_encode(array("code"=>200, 'message'=>'success'));
+	}
+
 /**
  * index method
  *

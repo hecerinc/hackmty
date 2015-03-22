@@ -14,6 +14,35 @@ class AnswersController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+/**
+* Agregar votes a las answers
+* @var $answer_id = int
+* @var $type = string: 'up' o 'down'
+* Se usa findByUserId? 
+*/
+
+	public function vote($answer_id, $type){
+		$this->autoRender = false;
+		if(!$this->request->is('ajax'))
+			return false;
+		$answer = $this->Answer->find('first', array('conditions' => array('Answer.id' => $answer_id)); //Se puede con findByUserId? 
+		if(!$answer)
+			return false;
+		$this->Answer->id = $answer_id; //No estoy seguro si puedo poner esto aqui
+		if($type=='up'){ 
+			$upvotes = $answer['Answer']['upvote'];
+			$this->Answer->saveField('upvote', $upvotes+1);
+
+		}
+		elseif($type=='down'){ 
+			$downvotes = $answer['Answer']['downvote'];
+			$this->Answer->saveField('downvote', $downvotes+1);
+
+		}
+		else
+			return false;
+		return json_encode(array("code"=>200, 'message'=>'success')); //ese "code" si lleva comillas dobles?
+	}
 
 /**
  * index method
